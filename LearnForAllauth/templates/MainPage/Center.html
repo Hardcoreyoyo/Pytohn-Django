@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Center</title>
+</head>
+<div><h1>會員中心</h1></div>
+<body>
+    {% for address, transCh in MemberFuncZipOut %}
+        <div>
+            <a href="/dont_wanna_tell_u/{{address}}">
+            {{transCh}}
+            </a>
+        </div>
+    {% endfor %}
+
+      <div><a href="/MainPage/News">回首頁</a></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body>
+
+    <div><h1>This is for Messages</h1></div>
+
+    {% if user.is_active %}
+            <div><h1>already active</h1></div> <div><h1>But not staff</h1></div>
+            <div><h1><a href="/MainPage/Center">會員中心</a></h1></div>
+            <form method="post" action="/dont_wanna_tell_u/logout/">
+                <button type="submit" style="color:blue;background-color:transparent;border:none;"><h1>點我登出</h1></button>
+                {% csrf_token %}
+            </form>
+    {% elif user.is_active and user.is_staff %}
+             <div><h1><a href="/admin">管理員後台</a></h1></div>
+    {% else %}
+            <div><h1><a href="/dont_wanna_tell_u/login">點我登入</a></h1></div>
+    {% endif %}
+
+
+    {% if messages %}
+        <h1>
+            <div class="messages">
+                {% for message in messages %}
+                    <lu{% if message.tags %} class="{{ message.tags }}" style="background-color:lightgray;border:2px solid" {% endif %}>
+                        {{ message }}
+                    </lu>
+                {% endfor %}
+            </div>
+        </h1>
+    {% endif %}
+
+</body>
+</html>
