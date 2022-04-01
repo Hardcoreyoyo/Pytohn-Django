@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% for AllDataOut in AllData %}
+        {{ AllDataOut}} <br>
+
+        <a href="{% url 'store2:Updata' AllDataOut.id %}"><button>修改</button></a>
+    {% endfor %}
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+</body>
+</html>
+

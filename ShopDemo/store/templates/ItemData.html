@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>調出全部商品</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+
+<form method="post" >
+    {% csrf_token %}
+    <input type="submit" value="增加10個項目">
+</form>
+
+
+
+    <table class="table table-bordered">
+            <tr>
+                  <th scope="col">商品</th>
+                  <th scope="col">價錢</th>
+                  <th scope="col">種類</th>
+            </tr>
+        {% for category in categorys  %}
+            <tr>
+                <td>{{ category.name  }}</td>
+                <td>{{ category.price  }}</td>
+                <td>{{ category.Category  }}</td>
+            </tr>
+        {% endfor %}
+{#         </tbody>#}
+    </table>
+
+
+
+
+<ul class="pagination">
+    {% if categorys.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1">« first</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ categorys.previous_page_number }}">previous</a>
+      </li>
+    {% endif %}
+
+    {% for i in categorys.paginator.page_range %}
+      <li class="page-item {% if i == categorys.number %} active{% endif %}">
+        <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+      </li>
+    {% endfor %}
+
+    {% if categorys.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ categorys.next_page_number }}">next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ categorys.paginator.num_pages }}">last »</a>
+      </li>
+    {% endif %}
+
+</ul>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FormModelAddDataFunc2</title>
+</head>
+<body>
+
+    <form action="/store2/delete" method="POST" name="form1">
+        {% csrf_token %}
+        <div>請輸入刪除編號：<input type="text" name="username">
+            <input type="submit" value="送出資料">
+        </div>
+    </form>
+
+
+</body>
+</html>

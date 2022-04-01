@@ -1,0 +1,103 @@
+{% extends 'base1.html' %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>調用資料庫資料</title>
+
+{% block css%}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'store/css/HomePage.css' %}">
+
+
+
+{% endblock %}
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+
+
+
+{% block content %}
+<table border="0">
+  <tr>
+
+    <td>
+      <table border="0">
+
+        <form action="{% url 'store2:category' %}" method="POST" >
+                {% for CategoryModelAllData11 in CategoryModelAllData %}
+                  <tr>
+                    <td><input type="checkbox" name="one" value="{{ CategoryModelAllData11.pk }}"/></td>
+                  </tr>
+                {% endfor %}
+                {% csrf_token %}
+
+                    <tr>
+                        <td>{{ Input_Table.as_p }}</td>
+                    </tr>
+
+
+            <td><input type="submit" value="送出"></td>
+        </form>
+      </table>
+    </td>
+
+
+    <td>
+      <table border="0">
+      	{% for CategoryModelAllDataLenOut1 in CategoryModelAllDataCount1Out %}
+          <tr>
+              <td>{{ CategoryModelAllDataLenOut1 }}</td>
+          </tr>
+
+         {% endfor %}
+      </table>
+    </td>
+
+    <td>
+      <table border="0">
+      	{% for CategoryModelAllData1 in CategoryModelAllData %}
+          <tr>
+              <td>{{ CategoryModelAllData1.name }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </td>
+
+  </tr>
+</table>
+
+
+<br>
+<br>
+
+
+<a href="/store2/ItemDataPath">
+    <button>全部商品列表</button></a><br><br><br><br>
+<a href="/store2/ItemAddPath">
+    <button>新增商品</button></a><br><br><br><br>
+<a href="/store2/NewCategory2">
+    <button>新首頁種類表</button></a><br><br><br><br>
+<a href="/store2/CategoryDelete">
+    <button>新刪除種類</button></a><br><br><br><br>
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

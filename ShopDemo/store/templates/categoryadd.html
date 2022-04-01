@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加種類</title>
+</head>
+<body>
+    <div>新增類別</div>
+    <form method="post" action="/store/categoryadd">
+        {% csrf_token %}
+        <div>
+            <label for="name">名稱</label>
+            <input id="name" name="name">
+        </div>
+
+        <input type="submit" value="儲存">
+
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% if messages %}
+    <div>
+        {% for message in messages %}
+            <div {%  if message.tags %} class="{{ message.tag }}" {% endif %}>
+                {{ message.tags }}-{{ message }}
+            </div>
+        {% endfor%}
+    </div>
+{% endif %}
+
+
+<form method="post" >
+
+    {% for qq in UpdataOut %}
+            {{ qq }} <br>
+        {% endfor %}
+
+    {% csrf_token %}
+    <input type="submit" value="送出">
+
+</form>
+
+
+
+
+</body>
+</html>

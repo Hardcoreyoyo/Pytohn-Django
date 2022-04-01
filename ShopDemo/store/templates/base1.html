@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+
+{% block css%}
+{% endblock %}
+
+</head>
+
+
+
+<body>
+
+{% if messages %}
+    <div>
+        {% for message in messages %}
+            <div {%  if message.tags %} class="{{ message.tag }}" {% endif %}>
+                {{ message.tags }}-{{ message }}
+            </div>
+        {% endfor%}
+    </div>
+{% endif %}
+
+{% block content %}
+
+
+{% endblock %}
+
+</body>
+</html>
